@@ -15,10 +15,13 @@
     --border-color: #E5E7EB;
     --success-color: #10B981;
     --error-color: #EF4444;
+    --banner-bg: #EEF2FF;
+    --banner-text: #4F46E5;
     --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     --card-radius: 12px;
     --transition: all 0.3s ease;
     --header-height: 80px;
+    --banner-height: 40px;
     --animation-duration: 0.5s;
 }
 
@@ -106,6 +109,35 @@ p {
     margin-bottom: 3rem;
 }
 
+/* Top Banner */
+.top-banner {
+    background-color: var(--banner-bg);
+    color: var(--banner-text);
+    font-weight: 600;
+    height: var(--banner-height);
+    display: flex;
+    align-items: center;
+    font-size: 0.875rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1001;
+}
+
+.top-banner p {
+    margin-bottom: 0;
+    color: var(--banner-text);
+    text-align: center;
+    width: 100%;
+}
+
+.highlight {
+    background-color: rgba(79, 70, 229, 0.1);
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+}
+
 /* Buttons */
 .btn {
     display: inline-block;
@@ -154,7 +186,7 @@ p {
 /* Header */
 .header {
     position: fixed;
-    top: 0;
+    top: var(--banner-height);
     left: 0;
     width: 100%;
     height: var(--header-height);
@@ -225,7 +257,7 @@ p {
 
 /* Hero Section */
 .hero {
-    padding: 160px 0 100px;
+    padding: calc(var(--banner-height) + var(--header-height) + 80px) 0 100px;
     background: linear-gradient(180deg, rgba(249, 250, 251, 0.5) 0%, rgba(249, 250, 251, 1) 100%);
 }
 
@@ -243,6 +275,40 @@ p {
 .subheadline {
     font-size: 1.25rem;
     margin-bottom: 2rem;
+}
+
+/* Typing Animation */
+.typing-container {
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+.typing-text {
+    position: relative;
+    display: inline-block;
+    min-width: 12ch;
+}
+
+.typing-text::after {
+    content: '|';
+    position: absolute;
+    right: -4px;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+.micro-copy {
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    color: var(--text-light);
+    font-style: italic;
 }
 
 .waitlist-form {
@@ -336,6 +402,11 @@ p {
 
 .benefit-icon {
     margin-bottom: 1.5rem;
+}
+
+.icon-svg {
+    width: 56px;
+    height: 56px;
 }
 
 .benefit-card h3 {
@@ -493,6 +564,35 @@ p {
 
 .audience-icon {
     margin-bottom: 1.5rem;
+}
+
+.case-avatar {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+    background-color: rgba(79, 70, 229, 0.05);
+    padding: 0.75rem;
+    border-radius: 6px;
+}
+
+.avatar {
+    font-size: 1.5rem;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--bg-light);
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.case-avatar p {
+    margin-bottom: 0;
+    font-size: 0.875rem;
+    line-height: 1.4;
+    color: var(--text-color);
 }
 
 .audience-card h3 {
@@ -670,7 +770,7 @@ p {
     }
     
     .hero {
-        padding: 140px 0 80px;
+        padding: calc(var(--banner-height) + var(--header-height) + 60px) 0 80px;
     }
     
     .hero .container {
@@ -729,6 +829,10 @@ p {
 }
 
 @media (max-width: 480px) {
+    .top-banner {
+        font-size: 0.75rem;
+    }
+    
     h1 {
         font-size: 2rem;
     }

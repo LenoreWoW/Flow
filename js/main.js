@@ -4,62 +4,60 @@
 
 document.addEventListener('DOMContentLoaded', function() {
     // Mobile menu toggle
-    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+    const menuToggle = document.querySelector('.mobile-menu-toggle');
     const mainNav = document.querySelector('.main-nav');
     
-    if (mobileMenuToggle && mainNav) {
-        mobileMenuToggle.addEventListener('click', function() {
+    if (menuToggle && mainNav) {
+        menuToggle.addEventListener('click', function() {
             this.classList.toggle('active');
             mainNav.classList.toggle('active');
         });
     }
     
-    // Typing animation
+    // Typing effect
     const typingElement = document.querySelector('.typing-text');
+    
     if (typingElement) {
-        const phrases = [
-            'your Notion wiki',
-            'your FAQ doc',
-            'your help center',
+        const texts = [
             'your knowledge base',
-            'your team docs'
+            'your documentation',
+            'your Notion pages',
+            'your PDFs',
+            'your help center'
         ];
-        let currentPhraseIndex = 0;
-        let currentCharIndex = 0;
+        
+        let textIndex = 0;
+        let charIndex = 0;
         let isDeleting = false;
         let typingSpeed = 100;
-        let pauseDuration = 1500;
         
         function type() {
-            const currentPhrase = phrases[currentPhraseIndex];
+            const currentText = texts[textIndex];
             
             if (isDeleting) {
-                // Deleting the phrase
-                typingElement.textContent = currentPhrase.substring(0, currentCharIndex - 1);
-                currentCharIndex--;
+                typingElement.textContent = currentText.substring(0, charIndex - 1);
+                charIndex--;
                 typingSpeed = 50; // Faster when deleting
             } else {
-                // Typing the phrase
-                typingElement.textContent = currentPhrase.substring(0, currentCharIndex + 1);
-                currentCharIndex++;
-                typingSpeed = 100; // Normal typing speed
+                typingElement.textContent = currentText.substring(0, charIndex + 1);
+                charIndex++;
+                typingSpeed = 100; // Normal speed when typing
             }
             
-            // Check if completed typing phrase
-            if (!isDeleting && currentCharIndex === currentPhrase.length) {
-                // Pause at the end of phrase
+            if (!isDeleting && charIndex === currentText.length) {
+                // Pause at the end of typing
                 isDeleting = true;
-                typingSpeed = pauseDuration;
-            } else if (isDeleting && currentCharIndex === 0) {
-                // Move to next phrase
+                typingSpeed = 1500; // Wait before deleting
+            } else if (isDeleting && charIndex === 0) {
                 isDeleting = false;
-                currentPhraseIndex = (currentPhraseIndex + 1) % phrases.length;
+                textIndex = (textIndex + 1) % texts.length;
+                typingSpeed = 500; // Pause before typing new text
             }
             
             setTimeout(type, typingSpeed);
         }
         
-        // Start the typing animation
+        // Start the typing effect
         setTimeout(type, 1000);
     }
     
@@ -87,133 +85,160 @@ document.addEventListener('DOMContentLoaded', function() {
     const heroForm = document.getElementById('hero-waitlist-form');
     const footerForm = document.getElementById('footer-waitlist-form');
     
-    function handleFormSubmit(form, successElementId) {
-        if (!form) return;
+    const handleFormSubmit = function(event, formId) {
+        event.preventDefault();
         
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form elements
-            const emailInput = form.querySelector('input[type="email"]');
-            const honeypotField = form.querySelector('input[name="honeypot"]');
-            const successElement = document.getElementById(successElementId);
-            
-            // Spam protection - if honeypot field is filled, ignore submission
-            if (honeypotField && honeypotField.value) {
-                console.log('Potential spam detected');
-                return;
-            }
-            
-            // Basic email validation
-            const email = emailInput.value.trim();
-            if (!validateEmail(email)) {
-                showFormError(emailInput, 'Please enter a valid email address');
-                return;
-            }
-            
-            if (email) {
-                // Track conversion in analytics
-                trackEvent('waitlist_signup', {
-                    'event_category': 'engagement',
-                    'event_label': 'waitlist_join'
-                });
+        const form = event.target;
+        const email = form.querySelector('input[type="email"]').value;
+        const honeypot = form.querySelector('input[name="honeypot"]').value;
+        const successElement = document.getElementById(`${formId}-form-success`);
+        
+        // Check if honeypot field is filled (spam bot)
+        if (honeypot) {
+            return;
+        }
+        
+        // Basic email validation
+        if (!isValidEmail(email)) {
+            showFormError(form, 'Please enter a valid email address');
+            return;
+        }
+        
+        // Clear any previous errors
+        clearFormErrors(form);
+        
+        // Simulating API call to waitlist service
+        // In production, replace with actual API call to Supabase, Firebase, or your backend
+        setTimeout(() => {
+            // Show success message
+            if (successElement) {
+                successElement.style.display = 'block';
                 
-                // TODO: Replace with Supabase integration
-                // Example Supabase code:
-                /*
-                async function storeEmailInSupabase(email) {
-                    const SUPABASE_URL = 'YOUR_SUPABASE_URL';
-                    const SUPABASE_KEY = 'YOUR_SUPABASE_KEY';
-                    const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
-                    
-                    try {
-                        const { data, error } = await supabase
-                            .from('waitlist')
-                            .insert([{ 
-                                email: email, 
-                                created_at: new Date(),
-                                source: window.location.pathname,
-                                utm_source: getUTMParam('utm_source'),
-                                utm_medium: getUTMParam('utm_medium'),
-                                utm_campaign: getUTMParam('utm_campaign')
-                            }]);
-                            
-                        if (error) throw error;
-                        return { success: true, data };
-                    } catch (error) {
-                        console.error('Error storing email:', error);
-                        return { success: false, error };
-                    }
-                }
+                // Hide the form inputs
+                form.querySelector('.form-group').style.display = 'none';
+                form.querySelector('.micro-copy').style.display = 'none';
                 
-                storeEmailInSupabase(email);
-                */
+                // Log email for development purposes
+                console.log(`Waitlist submission: ${email}`);
                 
-                // Store email in localStorage as a temporary solution
-                const emails = JSON.parse(localStorage.getItem('waitlistEmails') || '[]');
+                // Reset form
+                form.reset();
                 
-                // Check if email already exists
-                if (!emails.some(item => item.email === email)) {
-                    emails.push({
-                        email: email,
-                        timestamp: new Date().toISOString(),
-                        source: window.location.pathname,
-                        referrer: document.referrer || 'direct'
+                // Scroll to the success message if needed
+                successElement.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                
+                // Optional: Send event to analytics
+                if (typeof gtag === 'function') {
+                    gtag('event', 'waitlist_signup', {
+                        'event_category': 'engagement',
+                        'event_label': formId
                     });
-                    localStorage.setItem('waitlistEmails', JSON.stringify(emails));
                 }
-                
-                // Show success message
-                if (successElement) {
-                    successElement.style.display = 'block';
-                    successElement.textContent = 'Thank you for joining the waitlist!';
-                }
-                
-                // Clear the form
-                emailInput.value = '';
-                
-                // Hide success message after 5 seconds
-                setTimeout(() => {
-                    if (successElement) {
-                        successElement.style.display = 'none';
-                    }
-                }, 5000);
             }
+        }, 1000); // Simulate network delay for better UX
+    };
+    
+    if (heroForm) {
+        heroForm.addEventListener('submit', function(event) {
+            handleFormSubmit(event, 'hero');
         });
     }
     
-    handleFormSubmit(heroForm, 'hero-form-success');
-    handleFormSubmit(footerForm, 'footer-form-success');
+    if (footerForm) {
+        footerForm.addEventListener('submit', function(event) {
+            handleFormSubmit(event, 'footer');
+        });
+    }
     
-    // Smooth scrolling for anchor links
+    // Email validation helper
+    function isValidEmail(email) {
+        const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(String(email).toLowerCase());
+    }
+    
+    // Show form error helper
+    function showFormError(form, message) {
+        // Clear any existing errors
+        clearFormErrors(form);
+        
+        // Add error class to input
+        const emailInput = form.querySelector('input[type="email"]');
+        if (emailInput) {
+            emailInput.classList.add('input-error');
+            
+            // Create and append error message
+            const errorElement = document.createElement('div');
+            errorElement.className = 'form-error';
+            errorElement.textContent = message;
+            
+            // Add after the form group
+            const formGroup = form.querySelector('.form-group');
+            if (formGroup) {
+                formGroup.after(errorElement);
+            }
+        }
+    }
+    
+    // Clear form errors helper
+    function clearFormErrors(form) {
+        // Remove error class from input
+        const emailInput = form.querySelector('input[type="email"]');
+        if (emailInput) {
+            emailInput.classList.remove('input-error');
+        }
+        
+        // Remove any error messages
+        const errorElements = form.querySelectorAll('.form-error');
+        errorElements.forEach(el => el.remove());
+    }
+    
+    // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
-            const href = this.getAttribute('href');
+            e.preventDefault();
             
-            if (href !== '#') {
-                e.preventDefault();
-                
-                const targetElement = document.querySelector(href);
-                if (targetElement) {
-                    // Add offset for fixed header and banner
-                    const headerHeight = document.querySelector('.header').offsetHeight;
-                    const bannerHeight = document.querySelector('.top-banner').offsetHeight;
-                    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - (headerHeight + bannerHeight);
-                    
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
-                    });
-                    
-                    // Close mobile menu if open
-                    if (mainNav.classList.contains('active')) {
-                        mainNav.classList.remove('active');
-                        mobileMenuToggle.classList.remove('active');
-                    }
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            
+            if (targetElement) {
+                // Close mobile menu if open
+                if (menuToggle && menuToggle.classList.contains('active')) {
+                    menuToggle.classList.remove('active');
+                    mainNav.classList.remove('active');
                 }
+                
+                // Smooth scroll to target
+                targetElement.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+                
+                // Update URL hash without jumping
+                history.pushState(null, null, targetId);
             }
         });
     });
+    
+    // Intersection Observer for fade-in animations
+    if ('IntersectionObserver' in window) {
+        const appearOptions = {
+            threshold: 0.15,
+            rootMargin: "0px 0px -50px 0px"
+        };
+        
+        const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                entry.target.classList.add('appear');
+                observer.unobserve(entry.target);
+            });
+        }, appearOptions);
+        
+        // Observe elements that should animate on scroll
+        document.querySelectorAll('.benefit-card, .step-card, .audience-card').forEach(el => {
+            appearOnScroll.observe(el);
+        });
+    }
     
     // Scroll animations
     const animatedElements = document.querySelectorAll('.benefit-card, .step-card, .story-card, .audience-card');

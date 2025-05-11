@@ -223,7 +223,16 @@ p {
 }
 
 .header-cta {
-    margin-left: 1rem;
+    padding: 0.5rem 1rem;
+    height: auto;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(79, 70, 229, 0.15);
+}
+
+.header-cta:hover {
+    box-shadow: 0 4px 6px rgba(79, 70, 229, 0.25);
+    transform: translateY(-1px);
 }
 
 .mobile-menu-toggle {
@@ -317,8 +326,8 @@ p {
 
 .waitlist-form .form-group {
     display: flex;
-    gap: 0.5rem;
-    position: relative;
+    flex-direction: column;
+    gap: 0.75rem;
 }
 
 .waitlist-form input {
@@ -337,25 +346,30 @@ p {
 }
 
 .waitlist-form input.input-error {
-    border: 2px solid var(--error-color);
+    border-color: #EF4444;
+}
+
+.form-helper {
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+    color: #6B7280;
 }
 
 .form-error {
+    color: #EF4444;
+    font-size: 0.85rem;
     margin-top: 0.5rem;
-    font-size: 0.875rem;
-    color: var(--error-color);
-    font-weight: 500;
-    animation: fadeIn 0.3s ease;
 }
 
 .form-success {
-    margin-top: 1rem;
-    padding: 0.75rem;
-    background-color: var(--success-color);
-    color: white;
+    padding: 0.75rem 1rem;
+    background-color: #ECFDF5;
+    border: 1px solid #A7F3D0;
     border-radius: 6px;
+    color: #065F46;
     font-weight: 500;
-    animation: fadeIn 0.5s ease;
+    margin-top: 1rem;
+    text-align: center;
 }
 
 .demo-widget {
@@ -554,13 +568,10 @@ p {
 }
 
 .audience-card {
-    background-color: white;
-    padding: 2rem;
-    border-radius: var(--card-radius);
-    box-shadow: var(--card-shadow);
-    transition: var(--transition);
-    opacity: 0;
-    transform: translateY(30px);
+    padding: 1.5rem;
+    border-radius: 12px;
+    background-color: #F9FAFB;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .audience-card.animated {
@@ -571,7 +582,7 @@ p {
 
 .audience-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 }
 
 .audience-icon {
@@ -588,23 +599,16 @@ p {
     border-radius: 6px;
 }
 
-.avatar {
-    font-size: 1.5rem;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--bg-light);
-    border-radius: 50%;
-    flex-shrink: 0;
+.case-avatar h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #111827;
+    margin: 0.5rem 0;
 }
 
-.case-avatar p {
-    margin-bottom: 0;
-    font-size: 0.875rem;
-    line-height: 1.4;
-    color: var(--text-color);
+.case-avatar .avatar {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
 }
 
 .audience-card h3 {
@@ -711,9 +715,11 @@ p {
 }
 
 .footer-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
-    padding-top: 2rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    gap: 0.25rem;
 }
 
 .footer-bottom p {
@@ -986,4 +992,100 @@ p {
     .social-proof {
         margin-top: 1.5rem;
     }
+}
+
+/* Add styles for the text logo and beta tag */
+.text-logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #4F46E5;
+    display: inline-flex;
+    align-items: center;
+}
+
+.beta-tag {
+    font-size: 0.6rem;
+    background-color: #818CF8;
+    color: white;
+    padding: 2px 6px;
+    border-radius: 12px;
+    margin-left: 5px;
+    font-weight: 600;
+    text-transform: uppercase;
+    vertical-align: super;
+}
+
+/* Add built with message styling */
+.built-with {
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+    color: #9CA3AF;
+}
+
+/* Update waitlist form styling for better layout */
+@media (min-width: 640px) {
+    .waitlist-form .form-group {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+    
+    .waitlist-form .form-helper {
+        position: absolute;
+        top: -1.5rem;
+        left: 0;
+        margin-bottom: 0;
+    }
+    
+    .waitlist-form .form-group {
+        position: relative;
+        padding-top: 1.5rem;
+    }
+}
+
+/* Enhance audience cards */
+.audience-card {
+    padding: 1.5rem;
+    border-radius: 12px;
+    background-color: #F9FAFB;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.audience-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.case-avatar h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #111827;
+    margin: 0.5rem 0;
+}
+
+.case-avatar .avatar {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Better form success message styling */
+.form-success {
+    padding: 0.75rem 1rem;
+    background-color: #ECFDF5;
+    border: 1px solid #A7F3D0;
+    border-radius: 6px;
+    color: #065F46;
+    font-weight: 500;
+    margin-top: 1rem;
+    text-align: center;
+}
+
+/* Form error styling */
+.waitlist-form input.input-error {
+    border-color: #EF4444;
+}
+
+.form-error {
+    color: #EF4444;
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
 } 

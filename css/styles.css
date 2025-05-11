@@ -892,4 +892,98 @@ p {
     .feedback-card {
         padding: 2rem;
     }
+}
+
+/* Top Banner - Development Notice */
+.development-notice {
+    background-color: rgba(239, 68, 68, 0.1);
+    color: #EF4444;
+}
+
+.development-notice .highlight {
+    background-color: rgba(239, 68, 68, 0.2);
+}
+
+/* Social Proof Section */
+.social-proof {
+    margin-top: 2rem;
+    text-align: center;
+    border-top: 1px solid var(--border-color);
+    padding-top: 1.5rem;
+}
+
+.social-proof p {
+    font-size: 0.875rem;
+    color: var(--text-light);
+    margin-bottom: 0.5rem;
+}
+
+.brand-logos, .tool-logos {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.brand-logos span, .tool-logos span {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-color);
+    opacity: 0.7;
+}
+
+/* Development Stage Notice */
+.development-stage {
+    padding: 60px 0 40px;
+    background-color: var(--bg-light);
+}
+
+.dev-notice-card {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: white;
+    border-radius: var(--card-radius);
+    box-shadow: var(--card-shadow);
+    text-align: center;
+    border-left: 4px solid var(--primary-color);
+}
+
+.dev-notice-card h2 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.dev-notice-card p {
+    margin-bottom: 1.5rem;
+    max-width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Product Hunt Badge Replacement */
+.inspiration-credit {
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.inspiration-credit p {
+    font-size: 0.875rem;
+    color: var(--text-light);
+    margin-bottom: 0.5rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .dev-notice-card {
+        padding: 1.5rem;
+    }
+    
+    .dev-notice-card p {
+        max-width: 100%;
+    }
+    
+    .social-proof {
+        margin-top: 1.5rem;
+    }
 } 

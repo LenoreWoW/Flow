@@ -1,0 +1,20 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#EEF2FF"/>
+  
+  <!-- Background Shapes -->
+  <circle cx="200" cy="100" r="300" fill="#4F46E5" fill-opacity="0.05"/>
+  <circle cx="1000" cy="500" r="250" fill="#4F46E5" fill-opacity="0.05"/>
+  
+  <!-- Logo -->
+  <rect x="150" y="180" width="140" height="140" rx="30" fill="#4F46E5" fill-opacity="0.8"/>
+  <rect x="150" y="340" width="140" height="140" rx="30" fill="#4F46E5" fill-opacity="0.4"/>
+  <rect x="100" y="250" width="60" height="60" rx="15" fill="#4F46E5" fill-opacity="0.2"/>
+  
+  <!-- Text -->
+  <rect x="350" y="180" width="700" height="80" rx="10" fill="#4F46E5"/>
+  <rect x="350" y="290" width="600" height="30" rx="10" fill="#6B7280"/>
+  <rect x="350" y="340" width="450" height="30" rx="10" fill="#6B7280"/>
+  
+  <!-- CTA Button -->
+  <rect x="350" y="420" width="250" height="60" rx="30" fill="#4F46E5"/>
+</svg> 

@@ -1,0 +1,36 @@
+<svg width="500" height="250" viewBox="0 0 500 250" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="500" height="250" rx="12" fill="#F9FAFB"/>
+  
+  <!-- Website Mockup -->
+  <rect x="100" y="30" width="300" height="180" rx="8" fill="white" stroke="#E5E7EB" stroke-width="2"/>
+  
+  <!-- Header -->
+  <rect x="100" y="30" width="300" height="40" rx="8" fill="#F3F4F6"/>
+  <rect x="120" y="45" width="40" height="10" rx="5" fill="#D1D5DB"/>
+  <rect x="170" y="45" width="40" height="10" rx="5" fill="#D1D5DB"/>
+  <rect x="220" y="45" width="40" height="10" rx="5" fill="#D1D5DB"/>
+  <rect x="340" y="45" width="40" height="10" rx="5" fill="#D1D5DB"/>
+  
+  <!-- Content -->
+  <rect x="120" y="90" width="160" height="10" rx="5" fill="#D1D5DB"/>
+  <rect x="120" y="110" width="260" height="6" rx="3" fill="#D1D5DB"/>
+  <rect x="120" y="124" width="240" height="6" rx="3" fill="#D1D5DB"/>
+  <rect x="120" y="138" width="220" height="6" rx="3" fill="#D1D5DB"/>
+  <rect x="120" y="152" width="180" height="6" rx="3" fill="#D1D5DB"/>
+  <rect x="120" y="180" width="80" height="14" rx="7" fill="#E5E7EB"/>
+  
+  <!-- Chat Widget Button -->
+  <circle cx="350" cy="180" r="20" fill="#4F46E5"/>
+  <path d="M340 180H345M350 180H355" stroke="white" stroke-width="2" stroke-linecap="round"/>
+  <path d="M340 175H360" stroke="white" stroke-width="2" stroke-linecap="round"/>
+  <path d="M345 185H355" stroke="white" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Code Snippet -->
+  <rect x="120" y="210" width="260" height="30" rx="4" fill="#111827"/>
+  <path d="M140 225L145 230L150 225" stroke="#A5B4FC" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M160 225L180 225" stroke="#22D3EE" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M190 225L220 225" stroke="#F472B6" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M230 225L260 225" stroke="#A5B4FC" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M270 225L290 225" stroke="#22D3EE" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M300 225L305 230L310 225" stroke="#A5B4FC" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg> 

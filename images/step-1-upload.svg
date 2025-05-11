@@ -1,0 +1,38 @@
+<svg width="500" height="250" viewBox="0 0 500 250" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="500" height="250" rx="12" fill="#F9FAFB"/>
+  
+  <!-- Document 1 -->
+  <rect x="100" y="50" width="80" height="100" rx="4" fill="white" stroke="#E5E7EB" stroke-width="2"/>
+  <rect x="115" y="70" width="50" height="4" rx="2" fill="#E5E7EB"/>
+  <rect x="115" y="85" width="50" height="4" rx="2" fill="#E5E7EB"/>
+  <rect x="115" y="100" width="30" height="4" rx="2" fill="#E5E7EB"/>
+  <rect x="115" y="115" width="40" height="4" rx="2" fill="#E5E7EB"/>
+  <rect x="115" y="130" width="20" height="4" rx="2" fill="#E5E7EB"/>
+  
+  <!-- Document 2 -->
+  <rect x="210" y="50" width="80" height="100" rx="4" fill="white" stroke="#E5E7EB" stroke-width="2"/>
+  <rect x="225" y="70" width="50" height="4" rx="2" fill="#E5E7EB"/>
+  <rect x="225" y="85" width="50" height="4" rx="2" fill="#E5E7EB"/>
+  <rect x="225" y="100" width="30" height="4" rx="2" fill="#E5E7EB"/>
+  <rect x="225" y="115" width="40" height="4" rx="2" fill="#E5E7EB"/>
+  <rect x="225" y="130" width="20" height="4" rx="2" fill="#E5E7EB"/>
+  
+  <!-- Document 3 (PDF) -->
+  <rect x="320" y="50" width="80" height="100" rx="4" fill="white" stroke="#E5E7EB" stroke-width="2"/>
+  <rect x="330" y="60" width="60" height="20" rx="2" fill="#EF4444" fill-opacity="0.1"/>
+  <path d="M345 70L350 70M340 75L355 75" stroke="#EF4444" stroke-width="1.5" stroke-linecap="round"/>
+  <rect x="335" y="90" width="50" height="4" rx="2" fill="#E5E7EB"/>
+  <rect x="335" y="105" width="50" height="4" rx="2" fill="#E5E7EB"/>
+  <rect x="335" y="120" width="30" height="4" rx="2" fill="#E5E7EB"/>
+  <rect x="335" y="135" width="40" height="4" rx="2" fill="#E5E7EB"/>
+  
+  <!-- Upload Arrow -->
+  <path d="M250 180L250 230" stroke="#4F46E5" stroke-width="3" stroke-linecap="round" stroke-dasharray="6 6"/>
+  <path d="M230 210L250 230L270 210" stroke="#4F46E5" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- FlowBot Container -->
+  <rect x="175" y="180" width="150" height="20" rx="10" fill="#4F46E5" fill-opacity="0.1" stroke="#4F46E5" stroke-width="2"/>
+  <path d="M188 190L195 190M205 190L212 190" stroke="#4F46E5" stroke-width="1.5" stroke-linecap="round"/>
+  <circle cx="300" cy="190" r="6" fill="#4F46E5"/>
+  <path d="M298 190L300 192L302 190" stroke="white" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+</svg> 

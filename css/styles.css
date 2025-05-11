@@ -449,8 +449,8 @@ p {
 .steps-container {
     display: flex;
     flex-direction: column;
-    gap: 3rem;
-    max-width: 800px;
+    gap: 2.5rem;
+    max-width: 850px;
     margin: 0 auto;
 }
 
@@ -458,14 +458,12 @@ p {
     display: flex;
     gap: 2rem;
     align-items: flex-start;
-    opacity: 0;
-    transform: translateY(30px);
+    transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-.step-card.animated {
+.step-card.appear {
     opacity: 1;
     transform: translateY(0);
-    animation: fadeUp var(--animation-duration) ease forwards;
 }
 
 .step-number {
@@ -775,6 +773,14 @@ p {
         flex-direction: column;
         gap: 1rem;
     }
+    
+    .steps-container {
+        gap: 2rem;
+    }
+    
+    .step-card {
+        padding-bottom: 1.5rem;
+    }
 }
 
 /* Responsive Styles */
@@ -912,30 +918,7 @@ p {
 
 /* Social Proof Section */
 .social-proof {
-    margin-top: 2rem;
-    text-align: center;
-    border-top: 1px solid var(--border-color);
-    padding-top: 1.5rem;
-}
-
-.social-proof p {
-    font-size: 0.875rem;
-    color: var(--text-light);
-    margin-bottom: 0.5rem;
-}
-
-.brand-logos, .tool-logos {
-    display: flex;
-    justify-content: center;
-    gap: 1.5rem;
-    flex-wrap: wrap;
-}
-
-.brand-logos span, .tool-logos span {
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: var(--text-color);
-    opacity: 0.7;
+    display: none;
 }
 
 /* Development Stage Notice */
@@ -987,10 +970,6 @@ p {
     
     .dev-notice-card p {
         max-width: 100%;
-    }
-    
-    .social-proof {
-        margin-top: 1.5rem;
     }
 }
 

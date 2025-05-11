@@ -336,6 +336,18 @@ p {
     box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
 }
 
+.waitlist-form input.input-error {
+    border: 2px solid var(--error-color);
+}
+
+.form-error {
+    margin-top: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--error-color);
+    font-weight: 500;
+    animation: fadeIn 0.3s ease;
+}
+
 .form-success {
     margin-top: 1rem;
     padding: 0.75rem;
@@ -852,5 +864,32 @@ p {
     
     .footer-links {
         grid-template-columns: 1fr;
+    }
+}
+
+/* Feedback Section */
+.feedback {
+    padding: 80px 0;
+}
+
+.feedback-card {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 3rem;
+    background-color: white;
+    border-radius: var(--card-radius);
+    box-shadow: var(--card-shadow);
+}
+
+.feedback-text {
+    font-size: 1.125rem;
+    margin-bottom: 2rem;
+    color: var(--text-color);
+}
+
+@media (max-width: 768px) {
+    .feedback-card {
+        padding: 2rem;
     }
 } 

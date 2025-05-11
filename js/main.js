@@ -104,23 +104,39 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
             
-            if (emailInput && emailInput.value) {
-                // Analytics - track conversion
-                if (typeof gtag === 'function') {
-                    gtag('event', 'waitlist_signup', {
-                        'event_category': 'engagement',
-                        'event_label': 'waitlist_join'
-                    });
-                }
+            // Basic email validation
+            const email = emailInput.value.trim();
+            if (!validateEmail(email)) {
+                showFormError(emailInput, 'Please enter a valid email address');
+                return;
+            }
+            
+            if (email) {
+                // Track conversion in analytics
+                trackEvent('waitlist_signup', {
+                    'event_category': 'engagement',
+                    'event_label': 'waitlist_join'
+                });
                 
                 // TODO: Replace with Supabase integration
-                // Example Supabase code (commented out):
+                // Example Supabase code:
                 /*
                 async function storeEmailInSupabase(email) {
+                    const SUPABASE_URL = 'YOUR_SUPABASE_URL';
+                    const SUPABASE_KEY = 'YOUR_SUPABASE_KEY';
+                    const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
+                    
                     try {
                         const { data, error } = await supabase
                             .from('waitlist')
-                            .insert([{ email: email, created_at: new Date() }]);
+                            .insert([{ 
+                                email: email, 
+                                created_at: new Date(),
+                                source: window.location.pathname,
+                                utm_source: getUTMParam('utm_source'),
+                                utm_medium: getUTMParam('utm_medium'),
+                                utm_campaign: getUTMParam('utm_campaign')
+                            }]);
                             
                         if (error) throw error;
                         return { success: true, data };
@@ -130,21 +146,27 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                 }
                 
-                storeEmailInSupabase(emailInput.value);
+                storeEmailInSupabase(email);
                 */
                 
                 // Store email in localStorage as a temporary solution
                 const emails = JSON.parse(localStorage.getItem('waitlistEmails') || '[]');
-                emails.push({
-                    email: emailInput.value,
-                    timestamp: new Date().toISOString()
-                });
-                localStorage.setItem('waitlistEmails', JSON.stringify(emails));
+                
+                // Check if email already exists
+                if (!emails.some(item => item.email === email)) {
+                    emails.push({
+                        email: email,
+                        timestamp: new Date().toISOString(),
+                        source: window.location.pathname,
+                        referrer: document.referrer || 'direct'
+                    });
+                    localStorage.setItem('waitlistEmails', JSON.stringify(emails));
+                }
                 
                 // Show success message
                 if (successElement) {
                     successElement.style.display = 'block';
-                    successElement.textContent = 'You\'re on the list! Watch your inbox.';
+                    successElement.textContent = 'Thank you for joining the waitlist!';
                 }
                 
                 // Clear the form
@@ -304,4 +326,28 @@ function showFormError(inputElement, message) {
         errorMessage.remove();
         inputElement.classList.remove('input-error');
     }, 3000);
+}
+
+// Helper function to track events in various analytics platforms
+function trackEvent(eventName, eventParams) {
+    // Google Analytics 4
+    if (typeof gtag === 'function') {
+        gtag('event', eventName, eventParams);
+    }
+    
+    // Facebook Pixel
+    if (typeof fbq === 'function') {
+        fbq('track', eventName, eventParams);
+    }
+    
+    // Log to console in development
+    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+        console.log('Event tracked:', eventName, eventParams);
+    }
+}
+
+// Helper function to get UTM parameters
+function getUTMParam(param) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(param) || '';
 } 

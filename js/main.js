@@ -9,8 +9,8 @@ document.addEventListener('DOMContentLoaded', function() {
     
     if (mobileMenuToggle && mainNav) {
         mobileMenuToggle.addEventListener('click', function() {
+            this.classList.toggle('active');
             mainNav.classList.toggle('active');
-            mobileMenuToggle.classList.toggle('active');
         });
     }
     
@@ -64,29 +64,26 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // Scroll animations
-    const animatedElements = document.querySelectorAll('.benefit-card, .step-card, .pricing-card, .testimonial-card');
+    const animatedElements = document.querySelectorAll('.benefit-card, .step-card, .story-card, .audience-card');
     
-    // Function to check if element is in viewport
-    function isInViewport(element) {
-        const rect = element.getBoundingClientRect();
-        return (
-            rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.8 &&
-            rect.bottom >= 0
-        );
-    }
-    
-    // Function to add animation class when element is in viewport
-    function animateOnScroll() {
+    function checkIfInView() {
         animatedElements.forEach(element => {
-            if (isInViewport(element) && !element.classList.contains('animated')) {
+            // Get element's position relative to the viewport
+            const rect = element.getBoundingClientRect();
+            const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+            
+            // Check if element is in viewport
+            if (rect.top <= windowHeight * 0.85 && rect.bottom >= 0) {
                 element.classList.add('animated');
             }
         });
     }
     
-    // Run on scroll and on page load
-    window.addEventListener('scroll', animateOnScroll);
-    animateOnScroll();
+    // Check on initial load
+    checkIfInView();
+    
+    // Check on scroll
+    window.addEventListener('scroll', checkIfInView);
     
     // Add active class to current section in nav
     function setActiveNavItem() {
@@ -115,6 +112,69 @@ document.addEventListener('DOMContentLoaded', function() {
     
     window.addEventListener('scroll', setActiveNavItem);
     setActiveNavItem();
+    
+    // Handle waitlist form submissions
+    const heroForm = document.getElementById('hero-waitlist-form');
+    const footerForm = document.getElementById('footer-waitlist-form');
+    
+    function handleFormSubmit(form, successElementId) {
+        if (!form) return;
+        
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const emailInput = form.querySelector('input[type="email"]');
+            const successElement = document.getElementById(successElementId);
+            
+            if (emailInput && emailInput.value) {
+                // Store email in localStorage
+                const emails = JSON.parse(localStorage.getItem('waitlistEmails') || '[]');
+                emails.push({
+                    email: emailInput.value,
+                    timestamp: new Date().toISOString()
+                });
+                localStorage.setItem('waitlistEmails', JSON.stringify(emails));
+                
+                // Show success message
+                if (successElement) {
+                    successElement.style.display = 'block';
+                    successElement.textContent = 'Thank you! You\'ve been added to our waitlist.';
+                }
+                
+                // Clear the form
+                emailInput.value = '';
+                
+                // Hide success message after 5 seconds
+                setTimeout(() => {
+                    if (successElement) {
+                        successElement.style.display = 'none';
+                    }
+                }, 5000);
+            }
+        });
+    }
+    
+    handleFormSubmit(heroForm, 'hero-form-success');
+    handleFormSubmit(footerForm, 'footer-form-success');
+    
+    // Check if URL has a hash and scroll to it after page load
+    window.addEventListener('load', function() {
+        if (window.location.hash) {
+            const targetElement = document.querySelector(window.location.hash);
+            
+            if (targetElement) {
+                setTimeout(() => {
+                    const headerHeight = document.querySelector('.header').offsetHeight;
+                    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }, 100);
+            }
+        }
+    });
 });
 
 // Helper functions

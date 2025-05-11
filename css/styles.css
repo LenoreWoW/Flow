@@ -62,6 +62,19 @@ ul {
     padding: 0 20px;
 }
 
+/* Accessibility */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
 /* Typography */
 h1, h2, h3, h4, h5, h6 {
     margin-bottom: 1rem;
@@ -232,8 +245,39 @@ p {
     margin-bottom: 2rem;
 }
 
-.cta-container {
+.waitlist-form {
     margin-top: 2rem;
+}
+
+.waitlist-form .form-group {
+    display: flex;
+    gap: 0.5rem;
+    position: relative;
+}
+
+.waitlist-form input {
+    flex: 1;
+    padding: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+.waitlist-form input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
+}
+
+.form-success {
+    margin-top: 1rem;
+    padding: 0.75rem;
+    background-color: var(--success-color);
+    color: white;
+    border-radius: 6px;
+    font-weight: 500;
+    animation: fadeIn 0.5s ease;
 }
 
 .demo-widget {
@@ -351,118 +395,15 @@ p {
     box-shadow: var(--card-shadow);
 }
 
-/* Pricing Section */
-.pricing {
+/* Founder Story Section */
+.founder-story {
     padding: 100px 0;
     background-color: var(--bg-light);
 }
 
-.pricing-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-}
-
-.pricing-card {
-    background-color: white;
-    border-radius: var(--card-radius);
-    box-shadow: var(--card-shadow);
-    overflow: hidden;
-    transition: var(--transition);
-    position: relative;
-    opacity: 0;
-    transform: translateY(30px);
-}
-
-.pricing-card.animated {
-    opacity: 1;
-    transform: translateY(0);
-    animation: fadeUp var(--animation-duration) ease forwards;
-}
-
-.pricing-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-}
-
-.pricing-card-popular {
-    border: 2px solid var(--primary-color);
-    transform: scale(1.05);
-}
-
-.pricing-card-popular:hover {
-    transform: scale(1.05) translateY(-5px);
-}
-
-.popular-badge {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    background-color: var(--primary-color);
-    color: white;
-    font-size: 0.75rem;
-    font-weight: 600;
-    padding: 0.25rem 0.75rem;
-    border-radius: 999px;
-}
-
-.pricing-card-header {
-    padding: 2rem;
-    text-align: center;
-    border-bottom: 1px solid var(--border-color);
-}
-
-.price {
-    font-size: 3rem;
-    font-weight: 700;
-    color: var(--primary-color);
-    line-height: 1;
-    margin: 1rem 0;
-}
-
-.price span {
-    font-size: 1rem;
-    font-weight: 400;
-    color: var(--text-light);
-}
-
-.price-description {
-    font-size: 0.875rem;
-    color: var(--text-light);
-    margin-bottom: 0;
-}
-
-.pricing-card-features {
-    padding: 2rem;
-}
-
-.pricing-card-features ul li {
-    margin-bottom: 1rem;
-    position: relative;
-    padding-left: 1.5rem;
-}
-
-.pricing-card-features ul li:before {
-    content: "✓";
-    position: absolute;
-    left: 0;
-    color: var(--success-color);
-    font-weight: bold;
-}
-
-.pricing-card .btn {
-    margin: 0 2rem 2rem;
-}
-
-/* Testimonials Section */
-.testimonials {
-    padding: 100px 0;
-}
-
-.testimonial-card {
+.story-card {
     max-width: 800px;
     margin: 0 auto;
-    text-align: center;
     padding: 3rem;
     background-color: white;
     border-radius: var(--card-radius);
@@ -471,25 +412,28 @@ p {
     transform: translateY(30px);
 }
 
-.testimonial-card.animated {
+.story-card.animated {
     opacity: 1;
     transform: translateY(0);
     animation: fadeUp var(--animation-duration) ease forwards;
 }
 
-.testimonial-content p {
-    font-size: 1.5rem;
-    font-weight: 500;
-    color: var(--text-color);
-    font-style: italic;
+.story-content {
     margin-bottom: 2rem;
 }
 
-.testimonial-author {
+.story-content p {
+    font-size: 1.125rem;
+    color: var(--text-color);
+    line-height: 1.7;
+}
+
+.story-author {
     display: flex;
     align-items: center;
-    justify-content: center;
     gap: 1rem;
+    border-top: 1px solid var(--border-color);
+    padding-top: 2rem;
 }
 
 .author-img {
@@ -500,27 +444,76 @@ p {
 }
 
 .author-details {
-    text-align: left;
+    display: flex;
+    flex-direction: column;
 }
 
 .author-name {
-    display: block;
     font-weight: 600;
+    font-size: 1.125rem;
 }
 
 .author-title {
-    display: block;
-    font-size: 0.875rem;
     color: var(--text-light);
+    font-size: 0.875rem;
 }
 
-/* Newsletter Section */
-.newsletter {
+/* Who It's For Section */
+.who-its-for {
+    padding: 100px 0;
+}
+
+.audience-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.audience-card {
+    background-color: white;
+    padding: 2rem;
+    border-radius: var(--card-radius);
+    box-shadow: var(--card-shadow);
+    transition: var(--transition);
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.audience-card.animated {
+    opacity: 1;
+    transform: translateY(0);
+    animation: fadeUp var(--animation-duration) ease forwards;
+}
+
+.audience-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.audience-icon {
+    margin-bottom: 1.5rem;
+}
+
+.audience-card h3 {
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+}
+
+.product-hunt-badge {
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+}
+
+/* Waitlist Section */
+.waitlist {
     padding: 100px 0;
     background-color: var(--bg-light);
 }
 
-.newsletter-card {
+.waitlist-card {
     background-color: var(--primary-color);
     color: white;
     padding: 4rem;
@@ -528,73 +521,36 @@ p {
     text-align: center;
 }
 
-.newsletter-content {
+.waitlist-content {
     max-width: 600px;
     margin: 0 auto;
 }
 
-.newsletter-content h2 {
+.waitlist-content h2 {
     color: white;
     margin-bottom: 1rem;
 }
 
-.newsletter-content p {
+.waitlist-content p {
     color: rgba(255, 255, 255, 0.8);
     margin-bottom: 2rem;
 }
 
-.newsletter-form {
-    max-width: 500px;
-    margin: 0 auto;
-}
-
-.form-group {
-    display: flex;
-    gap: 0.5rem;
-    position: relative;
-}
-
-.form-group input {
-    flex: 1;
-    padding: 1rem;
-    border: none;
-    border-radius: 6px;
-    font-family: inherit;
-    font-size: 1rem;
-}
-
-.form-group input.input-error {
-    border: 2px solid var(--error-color);
-}
-
-.form-error {
-    position: absolute;
-    bottom: -25px;
-    left: 0;
-    color: white;
-    font-size: 0.875rem;
-    background-color: var(--error-color);
-    padding: 0.25rem 0.5rem;
-    border-radius: 4px;
-}
-
-.form-success {
-    color: white;
-    font-size: 1.25rem;
-    font-weight: 600;
-    padding: 1rem;
-    background-color: var(--success-color);
-    border-radius: 6px;
-    animation: fadeIn 0.5s ease;
-}
-
-.newsletter-form .btn {
+#footer-waitlist-form .btn-primary {
     background-color: white;
     color: var(--primary-color);
 }
 
-.newsletter-form .btn:hover {
+#footer-waitlist-form .btn-primary:hover {
     background-color: #f8fafc;
+}
+
+#footer-waitlist-form input {
+    border-color: transparent;
+}
+
+#footer-form-success {
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 /* Footer */
@@ -722,12 +678,16 @@ p {
     }
     
     .benefit-card, 
-    .pricing-card {
+    .audience-card {
         padding: 1.5rem;
     }
     
-    .newsletter-card {
+    .waitlist-card {
         padding: 3rem 2rem;
+    }
+    
+    .story-card {
+        padding: 2rem;
     }
 }
 
@@ -740,33 +700,31 @@ p {
         display: block;
     }
     
-    .hero .container {
+    .hero .container,
+    .footer-grid {
         grid-template-columns: 1fr;
+        gap: 3rem;
     }
     
     .hero-image {
         order: -1;
     }
     
-    .step-card {
+    .step-card,
+    .story-author {
         flex-direction: column;
     }
     
-    .footer-grid {
-        grid-template-columns: 1fr;
-        gap: 3rem;
+    .waitlist-form .form-group {
+        flex-direction: column;
+    }
+    
+    .waitlist-form .btn {
+        width: 100%;
     }
     
     .footer-links {
         grid-template-columns: repeat(2, 1fr);
-    }
-    
-    .pricing-card-popular {
-        transform: scale(1);
-    }
-    
-    .pricing-card-popular:hover {
-        transform: translateY(-5px);
     }
 }
 
@@ -783,12 +741,8 @@ p {
         display: none;
     }
     
-    .form-group {
-        flex-direction: column;
-    }
-    
-    .testimonial-card,
-    .newsletter-card {
+    .story-card,
+    .waitlist-card {
         padding: 2rem 1.5rem;
     }
     

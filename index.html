@@ -3,21 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FlowBot – AI Customer Support Chatbot for Solo Founders</title>
-    <meta name="description" content="Build and launch your AI support agent in minutes. FlowBot helps solo teams automate customer conversations — no code needed.">
+    <title>FlowBot – AI Customer Support Assistant for Founders & Small Teams</title>
+    <meta name="description" content="Deploy an AI chatbot in 3 minutes. FlowBot learns from your content to help customers, teammates, and users get answers instantly.">
     
     <!-- Open Graph / Social Media Meta Tags -->
-    <meta property="og:title" content="FlowBot – AI Customer Support Chatbot for Solo Founders">
-    <meta property="og:description" content="Build and launch your AI support agent in minutes. FlowBot helps solo teams automate customer conversations — no code needed.">
+    <meta property="og:title" content="FlowBot – AI Customer Support Assistant for Founders & Small Teams">
+    <meta property="og:description" content="Deploy an AI chatbot in 3 minutes. FlowBot learns from your content to help customers, teammates, and users get answers instantly.">
     <meta property="og:image" content="images/flowbot-og-image.svg">
     <meta property="og:url" content="https://flowbot.ai">
     <meta property="og:type" content="website">
     
     <!-- Twitter Card data -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="FlowBot – AI Customer Support Chatbot for Solo Founders">
-    <meta name="twitter:description" content="Build and launch your AI support agent in minutes. FlowBot helps solo teams automate customer conversations — no code needed.">
+    <meta name="twitter:title" content="FlowBot – AI Customer Support Assistant for Founders & Small Teams">
+    <meta name="twitter:description" content="Deploy an AI chatbot in 3 minutes. FlowBot learns from your content to help customers, teammates, and users get answers instantly.">
     <meta name="twitter:image" content="images/flowbot-og-image.svg">
+    
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "FlowBot",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "description": "Deploy an AI chatbot in 3 minutes. FlowBot learns from your content to help customers, teammates, and users get answers instantly.",
+      "image": "images/flowbot-og-image.svg"
+    }
+    </script>
     
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
@@ -43,10 +61,11 @@
                     <ul>
                         <li><a href="#why-flowbot">Why FlowBot</a></li>
                         <li><a href="#how-it-works">How It Works</a></li>
-                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#founder-story">Founder Story</a></li>
+                        <li><a href="#who-its-for">Who It's For</a></li>
                     </ul>
                 </nav>
-                <a href="#" class="btn btn-primary btn-sm header-cta">Try FlowBot Free</a>
+                <a href="#waitlist" class="btn btn-primary btn-sm header-cta">Join Waitlist</a>
                 <button class="mobile-menu-toggle" aria-label="Toggle menu">
                     <span></span>
                     <span></span>
@@ -60,16 +79,23 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1>24/7 AI Customer Support — Set Up in 3 Minutes.</h1>
-                <p class="subheadline">Upload your FAQs, Notion pages, or PDFs. FlowBot instantly builds a smart support bot, no coding or flow editors needed.</p>
-                <div class="cta-container">
-                    <a href="#" class="btn btn-primary btn-lg">Try FlowBot Free</a>
-                </div>
+                <h1>Your AI Support Agent, Ready in 3 Minutes.</h1>
+                <p class="subheadline">Upload a Notion page, PDF, or FAQ — FlowBot becomes your 24/7 smart support bot.</p>
+                <form class="waitlist-form" id="hero-waitlist-form">
+                    <div class="form-group">
+                        <label for="hero-email" class="sr-only">Email address</label>
+                        <input type="email" id="hero-email" name="email" placeholder="Your email address" required>
+                        <button type="submit" class="btn btn-primary">Join the Waitlist</button>
+                    </div>
+                    <div class="form-success" id="hero-form-success" style="display: none;">
+                        Thanks! You'll hear from us soon.
+                    </div>
+                </form>
             </div>
             <div class="hero-image">
                 <div class="demo-widget">
                     <div class="chat-widget-animation">
-                        <img src="images/flowbot-demo.svg" alt="FlowBot in action" width="400" height="300">
+                        <img src="images/flowbot-demo.svg" alt="FlowBot chatbot interface showing a support conversation" width="400" height="300">
                     </div>
                 </div>
             </div>
@@ -83,38 +109,38 @@
             <div class="benefits-grid">
                 <div class="benefit-card">
                     <div class="benefit-icon">
-                        <img src="images/icon-lean-teams.svg" alt="Lean Teams Icon" width="56" height="56">
+                        <img src="images/icon-lean-teams.svg" alt="Icon representing lean teams with minimal resources" width="56" height="56">
                     </div>
                     <h3>Built for Lean Teams</h3>
                     <p>FlowBot is purpose-built for solo founders and 2–3 person teams. No bloated dashboards, no complex setup.</p>
                 </div>
                 <div class="benefit-card">
                     <div class="benefit-icon">
-                        <img src="images/icon-instant.svg" alt="Instant Setup Icon" width="56" height="56">
+                        <img src="images/icon-instant.svg" alt="Icon showing instant setup process" width="56" height="56">
                     </div>
-                    <h3>Instant Setup</h3>
-                    <p>Paste a help doc, upload a PDF, or link to a Notion page — your AI support agent goes live in minutes.</p>
+                    <h3>Paste a Doc, Go Live</h3>
+                    <p>Upload a PDF, paste a help doc, or link to a Notion page — your AI support agent goes live in minutes. No code needed.</p>
                 </div>
                 <div class="benefit-card">
                     <div class="benefit-icon">
-                        <img src="images/icon-embed.svg" alt="Easy to Embed Icon" width="56" height="56">
+                        <img src="images/icon-embed.svg" alt="Icon showing embedding code" width="56" height="56">
                     </div>
                     <h3>Easy to Embed</h3>
                     <p>Add FlowBot to any site or share a hosted link. Perfect even if you don't have a website.</p>
                 </div>
                 <div class="benefit-card">
                     <div class="benefit-icon">
-                        <img src="images/icon-multilingual.svg" alt="Multilingual Icon" width="56" height="56">
+                        <img src="images/icon-multilingual.svg" alt="Icon representing multiple languages" width="56" height="56">
                     </div>
                     <h3>Multilingual from Day One</h3>
                     <p>Serve your customers in Arabic, French, Spanish, or English — with zero extra work.</p>
                 </div>
                 <div class="benefit-card">
                     <div class="benefit-icon">
-                        <img src="images/icon-human.svg" alt="Human-Friendly AI Icon" width="56" height="56">
+                        <img src="images/icon-human.svg" alt="Icon showing customizable human-like experience" width="56" height="56">
                     </div>
-                    <h3>Human-Friendly AI</h3>
-                    <p>Customize the tone of your support bot — formal, casual, or quirky — without learning prompt engineering.</p>
+                    <h3>Customize Tone</h3>
+                    <p>Customize your bot's tone — formal, friendly, or technical — without learning prompt engineering.</p>
                 </div>
             </div>
         </div>
@@ -130,7 +156,7 @@
                     <div class="step-content">
                         <h3>Upload your content</h3>
                         <p>Connect your FAQ page, knowledge base, Notion doc, or upload PDFs directly.</p>
-                        <img src="images/step-1-upload.svg" alt="Upload process illustration" class="step-img">
+                        <img src="images/step-1-upload.svg" alt="Illustration showing how to upload documents to FlowBot" class="step-img">
                     </div>
                 </div>
                 <div class="step-card">
@@ -138,7 +164,7 @@
                     <div class="step-content">
                         <h3>Preview your AI support bot</h3>
                         <p>Test your bot, fine-tune its tone, and make sure it's answering questions correctly.</p>
-                        <img src="images/step-2-preview.svg" alt="Preview process illustration" class="step-img">
+                        <img src="images/step-2-preview.svg" alt="Illustration showing the preview and testing process" class="step-img">
                     </div>
                 </div>
                 <div class="step-card">
@@ -146,102 +172,107 @@
                     <div class="step-content">
                         <h3>Embed or share your widget</h3>
                         <p>Add the widget to your site with one line of code or share a direct link with your customers.</p>
-                        <img src="images/step-3-embed.svg" alt="Embed process illustration" class="step-img">
+                        <img src="images/step-3-embed.svg" alt="Illustration showing how to embed the FlowBot widget on a website" class="step-img">
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Pricing Section -->
-    <section class="pricing" id="pricing">
+    <!-- Founder Story Section -->
+    <section class="founder-story" id="founder-story">
         <div class="container">
-            <h2 class="section-heading">Simple, Founder-Friendly Pricing</h2>
-            <div class="pricing-grid">
-                <div class="pricing-card">
-                    <div class="pricing-card-header">
-                        <h3>Free</h3>
-                        <div class="price">$0</div>
-                        <p class="price-description">Perfect for testing</p>
-                    </div>
-                    <div class="pricing-card-features">
-                        <ul>
-                            <li>1 bot</li>
-                            <li>100 queries/month</li>
-                            <li>Basic customization</li>
-                            <li>Email support</li>
-                        </ul>
-                    </div>
-                    <a href="#" class="btn btn-secondary btn-full">Get Started</a>
+            <h2 class="section-heading">Founder Story</h2>
+            <div class="story-card">
+                <div class="story-content">
+                    <p>I created FlowBot because I believe support should be smart, fast, and invisible. As a founder, I've wasted hours answering the same questions or digging through docs. So I built the tool I wished I had — one that learns from your content and gives instant answers to customers or new team members.</p>
+                    <p>FlowBot is for makers, solopreneurs, and lean teams. It's your AI teammate that never sleeps and always knows where to find the answer.</p>
                 </div>
-                <div class="pricing-card pricing-card-popular">
-                    <div class="popular-badge">Most Popular</div>
-                    <div class="pricing-card-header">
-                        <h3>Starter</h3>
-                        <div class="price">$15<span>/mo</span></div>
-                        <p class="price-description">For growing businesses</p>
-                    </div>
-                    <div class="pricing-card-features">
-                        <ul>
-                            <li>Up to 5 bots</li>
-                            <li>1,000 chats</li>
-                            <li>Full customization</li>
-                            <li>Priority email support</li>
-                        </ul>
-                    </div>
-                    <a href="#" class="btn btn-primary btn-full">Get Started</a>
-                </div>
-                <div class="pricing-card">
-                    <div class="pricing-card-header">
-                        <h3>Pro</h3>
-                        <div class="price">$49<span>/mo</span></div>
-                        <p class="price-description">For established teams</p>
-                    </div>
-                    <div class="pricing-card-features">
-                        <ul>
-                            <li>Unlimited bots</li>
-                            <li>Unlimited chats</li>
-                            <li>Full analytics</li>
-                            <li>Priority support</li>
-                        </ul>
-                    </div>
-                    <a href="#" class="btn btn-secondary btn-full">Get Started</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section class="testimonials">
-        <div class="container">
-            <h2 class="section-heading">What Founders Are Saying</h2>
-            <div class="testimonial-card">
-                <div class="testimonial-content">
-                    <p>"FlowBot saved me hours of repetitive support. I deployed it during lunch — and it's been helping customers ever since."</p>
-                </div>
-                <div class="testimonial-author">
-                    <img src="images/founder-avatar.svg" alt="Founder" class="author-img">
+                <div class="story-author">
+                    <img src="images/founder-avatar.svg" alt="Portrait of the FlowBot founder" class="author-img">
                     <div class="author-details">
                         <span class="author-name">Sarah Chen</span>
-                        <span class="author-title">Founder, DevTools Pro</span>
+                        <span class="author-title">Founder, FlowBot</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Newsletter Section -->
-    <section class="newsletter">
+    <!-- Who It's For Section -->
+    <section class="who-its-for" id="who-its-for">
         <div class="container">
-            <div class="newsletter-card">
-                <div class="newsletter-content">
-                    <h2>Stay in the Loop</h2>
-                    <p>Get product updates and chatbot tips. We never spam.</p>
+            <h2 class="section-heading">Who It's For</h2>
+            <div class="audience-grid">
+                <div class="audience-card">
+                    <div class="audience-icon">
+                        <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="56" height="56" rx="28" fill="#EEF2FF"/>
+                            <rect x="16" y="16" width="24" height="24" rx="4" fill="#4F46E5"/>
+                            <path d="M22 28L26 32L34 24" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3>Indie SaaS Teams</h3>
+                    <p>Perfect for small software teams who need to provide excellent support without a dedicated support team.</p>
                 </div>
-                <form class="newsletter-form" id="newsletter-form">
+                <div class="audience-card">
+                    <div class="audience-icon">
+                        <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="56" height="56" rx="28" fill="#EEF2FF"/>
+                            <rect x="16" y="16" width="24" height="24" rx="4" fill="#4F46E5"/>
+                            <path d="M22 28L26 32L34 24" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3>Coaches & Freelancers</h3>
+                    <p>Ideal for content creators, coaches, and freelancers who want to scale their ability to help clients.</p>
+                </div>
+                <div class="audience-card">
+                    <div class="audience-icon">
+                        <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="56" height="56" rx="28" fill="#EEF2FF"/>
+                            <rect x="16" y="16" width="24" height="24" rx="4" fill="#4F46E5"/>
+                            <path d="M22 28L26 32L34 24" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3>E-commerce Shops</h3>
+                    <p>E-commerce store owners who want to provide instant answers about products, shipping, and returns.</p>
+                </div>
+                <div class="audience-card">
+                    <div class="audience-icon">
+                        <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="56" height="56" rx="28" fill="#EEF2FF"/>
+                            <rect x="16" y="16" width="24" height="24" rx="4" fill="#4F46E5"/>
+                            <path d="M22 28L26 32L34 24" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3>Startup Founders</h3>
+                    <p>Startup founders who need to scale support before they scale their team - perfect for rapid growth periods.</p>
+                </div>
+            </div>
+            <div class="product-hunt-badge">
+                <a href="#" target="_blank" rel="noopener noreferrer">
+                    <img src="images/coming-soon-ph.svg" alt="Coming soon to Product Hunt" width="200">
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Waitlist Section -->
+    <section class="waitlist" id="waitlist">
+        <div class="container">
+            <div class="waitlist-card">
+                <div class="waitlist-content">
+                    <h2>Join the Waitlist</h2>
+                    <p>Be the first to know when FlowBot launches. Early access users get extended free trials.</p>
+                </div>
+                <form class="waitlist-form" id="footer-waitlist-form">
                     <div class="form-group">
-                        <input type="email" id="email" name="email" placeholder="Your email address" required>
-                        <button type="submit" class="btn btn-primary">Subscribe</button>
+                        <label for="footer-email" class="sr-only">Email address</label>
+                        <input type="email" id="footer-email" name="email" placeholder="Your email address" required>
+                        <button type="submit" class="btn btn-primary">Join the Waitlist</button>
+                    </div>
+                    <div class="form-success" id="footer-form-success" style="display: none;">
+                        Thanks! You'll hear from us soon.
                     </div>
                 </form>
             </div>
@@ -263,16 +294,16 @@
                         <h4>Product</h4>
                         <ul>
                             <li><a href="#why-flowbot">Features</a></li>
-                            <li><a href="#pricing">Pricing</a></li>
-                            <li><a href="#">Docs</a></li>
+                            <li><a href="#how-it-works">How It Works</a></li>
+                            <li><a href="#waitlist">Join Waitlist</a></li>
                         </ul>
                     </div>
                     <div class="footer-links-column">
                         <h4>Company</h4>
                         <ul>
-                            <li><a href="#">About</a></li>
-                            <li><a href="#">Blog</a></li>
-                            <li><a href="#">Careers</a></li>
+                            <li><a href="#founder-story">About</a></li>
+                            <!-- Comment: Add blog link after launch -->
+                            <li><a href="#who-its-for">Who It's For</a></li>
                         </ul>
                     </div>
                     <div class="footer-links-column">
